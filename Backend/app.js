@@ -28,6 +28,6 @@ app.use(userRoutes);
 app.use(authenticationRoutes);
 
 // Start the server
-app.listen(9000, () => {
+app.listen(process.env.PORT, () => {
   console.log('Server is running on port 9000');
 });
