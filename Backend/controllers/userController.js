@@ -6,7 +6,7 @@ exports.addTodo = async (req, res) => {
 
     try {
         const newUserTodo = await todo.create({
-            userId: id,
+            userid: id,
             content: content,
             status: "Incomplete",
             created_at: moment().tz("Asia/Kolkata").format("YYYY-MM-DD HH:mm:ss")
@@ -23,7 +23,7 @@ exports.getTodosByUserId = async (req, res) => {
     const { id } = req.params;
 
     try {
-        const todos = await todo.findAll({ where: { userId: id } });
+        const todos = await todo.findAll({ where: { userid: id } });
         res.status(200).json({ todos: todos });
     } catch (error) {
         console.error(error);

@@ -1,20 +1,17 @@
-const { Sequelize } = require('sequelize');
-require('dotenv').config({ path: 'cred.env' });
-
-// Create Sequelize connection
-const sequelize = new Sequelize(process.env.DB_DATABASE, process.env.DB_USER, process.env.DB_PASSWORD, {
-  host: process.env.DB_HOST,
-  dialect: 'mysql',
+const Sequelize = require("sequelize");
+const config = require("../config/config.json");
+const sequelize = new Sequelize({
+	connectionString: process.env.POSTGRES_URL + "?sslmode=require",
 });
 
 // Test the connection
 sequelize
   .authenticate()
   .then(() => {
-    console.log('Connected to MySQL');
+    console.log('Connected to PgAdmin');
   })
   .catch((error) => {
-    console.error('Failed to connect to MySQL:', error);
+    console.error('Failed to connect to PgAdmin:', error);
   });
 
 module.exports = sequelize;

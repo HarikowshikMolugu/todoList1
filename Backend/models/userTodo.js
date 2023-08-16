@@ -1,14 +1,14 @@
 const { DataTypes } = require('sequelize');
-const sequelize = require('../database/connection');
+const pool = require('../database/connection');
 const User = require('./user'); // Import User model
 
-const UserTodo = sequelize.define('userTodo', {
+const UserTodo = pool.define('userTodo', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true
   },
-  userId: {
+  userid: {
     type: DataTypes.INTEGER,
     references: {
       model: User,
